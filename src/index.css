@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  --color-surface-variant: #e4e2e0;
+  --color-primary-fixed: #c4ecd1;
+  --color-outline: #727973;
+  --color-inverse-surface: #30312f;
+  --color-error: #ba1a1a;
+  --color-surface-container-low: #f5f3f1;
+  --color-surface-dim: #dbdad8;
+  --color-inverse-primary: #a9d0b6;
+  --color-secondary-container: #bceacd;
+  --color-surface: #fbf9f7;
+  --color-on-secondary-fixed: #002112;
+  --color-primary: #002212;
+  --color-secondary-fixed: #bfedd0;
+  --color-on-secondary-fixed-variant: #254f39;
+  --color-on-primary: #ffffff;
+  --color-on-surface: #1b1c1b;
+  --color-on-error: #ffffff;
+  --color-on-tertiary-container: #939b96;
+  --color-tertiary-fixed-dim: #c0c8c3;
+  --color-surface-container-highest: #e4e2e0;
+  --color-tertiary: #171e1b;
+  --color-inverse-on-surface: #f2f0ee;
+  --color-secondary: #3d6750;
+  --color-tertiary-container: #2b332f;
+  --color-error-container: #ffdad6;
+  --color-on-tertiary: #ffffff;
+  --color-on-primary-container: #7da28a;
+  --color-surface-container-high: #e9e8e6;
+  --color-primary-container: #153826;
+  --color-on-background: #1b1c1b;
+  --color-on-secondary-container: #416b54;
+  --color-surface-bright: #fbf9f7;
+  --color-secondary-fixed-dim: #a3d1b5;
+  --color-on-surface-variant: #414843;
+  --color-on-primary-fixed: #002112;
+  --color-background: #fbf9f7;
+  --color-surface-container: #efeeeb;
+  --color-on-tertiary-fixed-variant: #414944;
+  --color-on-primary-fixed-variant: #2b4e3a;
+  --color-surface-container-lowest: #ffffff;
+  --color-tertiary-fixed: #dce4de;
+  --color-primary-fixed-dim: #a9d0b6;
+  --color-on-error-container: #93000a;
+  --color-surface-tint: #436651;
+  --color-outline-variant: #c1c8c1;
+  --color-on-tertiary-fixed: #161d1a;
+  --color-on-secondary: #ffffff;
+
+  --font-display: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
+
+  --spacing-margin-desktop: 3rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-surface);
+    color: var(--color-on-surface);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior: none;
+  }
+
+  ::selection {
+    background: #fce588;
+    color: var(--color-primary);
+  }
+}
