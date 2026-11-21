@@ -1,0 +1,35 @@
+{
+  "eyebrow": "The people",
+  "title": "Who runs Abisaki",
+  "intro": "A small team on the farm in Limuru — from the trees to the bag.",
+  "people": [
+    {
+      "id": "wambui",
+      "name": "Wambui Kariuki",
+      "role": "Farm lead",
+      "bio": "Runs day-to-day work on the trees and harvest crews.",
+      "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&q=80"
+    },
+    {
+      "id": "james",
+      "name": "James Otieno",
+      "role": "Processing",
+      "bio": "Handles washing, drying, and lot grading on site.",
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&q=80"
+    },
+    {
+      "id": "aisha",
+      "name": "Aisha Hassan",
+      "role": "Orders & delivery",
+      "bio": "WhatsApp shop, company plans, and dispatch from Limuru.",
+      "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&q=80"
+    },
+    {
+      "id": "peter",
+      "name": "Peter Kamau",
+      "role": "Roasting",
+      "bio": "Roasts and packs each lot before it leaves the farm.",
+      "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&q=80"
+    }
+  ]
+}

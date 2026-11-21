@@ -3,6 +3,7 @@ import { FarmStory } from './components/FarmStory'
 import { HarvestShowcase } from './components/HarvestShowcase'
 import { HeroCarousel } from './components/HeroCarousel'
 import { Manifesto } from './components/Manifesto'
+import { People } from './components/People'
 import { SiteFooter } from './components/SiteFooter'
 import { SiteHeader } from './components/SiteHeader'
 
@@ -15,6 +16,7 @@ export default function App() {
         <FarmStory />
         <HarvestShowcase />
         <CompanyPlans />
+        <People />
         <Manifesto />
       </main>
       <SiteFooter />
