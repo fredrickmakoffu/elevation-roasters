@@ -1,8 +1,8 @@
-# Elevation Roasters
+# Abisaki Farms
 
-Artisan coffee e-commerce landing for **Elevation Roasters** — ultra-light Nordic convection roasts from high-altitude micro-lots, dispatched from Oslo.
+Coffee site for **Abisaki Farms** in Limuru, Kenya — grow, harvest, process, and pack on the farm. Orders go through WhatsApp.
 
-Built in React from the Stitch design **Elevation Roasters — Essential & Refined Landing** (Artisan Coffee E-Commerce Store).
+Set the shop number in `src/config.ts` (`WHATSAPP_PHONE`).
 
 ## Stack
 
@@ -17,17 +17,12 @@ npm install
 npm run dev
 ```
 
-## Build
-
-```bash
-npm run build
-```
-
-## Deploy (Fly.io)
+## Deploy
 
 ```bash
 npm run build
 flyctl deploy --remote-only
 ```
 
-Live: https://elevation-roasters.fly.dev
+- Repo: https://github.com/fredrickmakoffu/elevation-roasters
+- Live: https://elevation-roasters.fly.dev

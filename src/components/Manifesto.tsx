@@ -1,10 +1,10 @@
-import { FlaskConical, Mountain, Wind } from 'lucide-react'
+import { Leaf, Package, Sprout } from 'lucide-react'
 import { manifesto } from '../data'
 
 const icons = {
-  terrain: Mountain,
-  air: Wind,
-  science: FlaskConical,
+  terrain: Sprout,
+  air: Leaf,
+  science: Package,
 }
 
 export function Manifesto() {
@@ -15,16 +15,14 @@ export function Manifesto() {
     >
       <div className="mx-auto max-w-[1440px]">
         <div className="mx-auto mb-12 max-w-2xl text-center">
-          <span className="mb-2 block text-xs font-bold tracking-widest text-secondary uppercase">
-            The Nordic Standard
-          </span>
+          <p className="mb-2 text-xs font-bold tracking-widest text-secondary uppercase">
+            How we work
+          </p>
           <h2 className="font-display text-3xl font-normal text-primary sm:text-4xl">
-            Precision Sourcing. Zero Drum Scorch.
+            Grow. Process. Pack.
           </h2>
           <p className="mt-3 text-sm text-on-surface-variant">
-            We reject dark roasted bitterness. By pairing extreme high-altitude
-            harvests with fluid-bed convection roasting, we preserve the
-            transparent terroir of every lot.
+            The whole chain stays on the farm in Limuru.
           </p>
         </div>
 
@@ -34,7 +32,7 @@ export function Manifesto() {
             return (
               <div
                 key={item.title}
-                className="flex flex-col justify-between rounded-2xl border border-outline-variant/30 bg-surface-container-lowest p-8 shadow-xs"
+                className="flex flex-col justify-between rounded-2xl border border-outline-variant/30 bg-surface-container-lowest p-8"
               >
                 <div>
                   <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-xl bg-surface-container-low text-primary">
