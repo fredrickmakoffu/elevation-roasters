@@ -18,11 +18,20 @@ const GOOGLE_FORM = {
   },
 } as const
 
+const COUNTRIES = [
+  'Kenya',
+  'Uganda',
+  'Tanzania',
+  'Rwanda',
+  'Ethiopia',
+  'Other',
+]
+
 const TOPICS = [
-  'Coffee order',
-  'Company subscription',
-  'Farm visit',
-  'General question',
+  'Coffee Products and Orders',
+  'Brewing Guides',
+  'Coffee Origins and Farm Visits',
+  'Corporate and Wholesale Orders',
   'Other',
 ]
 
@@ -194,14 +203,18 @@ export function ContactForm() {
                   <label className={labelClass} htmlFor="contact-country">
                     Country
                   </label>
-                  <input
+                  <select
                     id="contact-country"
                     name="country"
-                    autoComplete="country-name"
                     className={fieldClass}
-                    placeholder="Kenya"
-                    type="text"
-                  />
+                    defaultValue="Kenya"
+                  >
+                    {COUNTRIES.map((c) => (
+                      <option key={c} value={c}>
+                        {c}
+                      </option>
+                    ))}
+                  </select>
                 </div>
                 <div>
                   <label className={labelClass} htmlFor="contact-topic">
@@ -212,6 +225,7 @@ export function ContactForm() {
                     name="topic"
                     className={fieldClass}
                     defaultValue=""
+                    required
                   >
                     <option value="" disabled>
                       Select a topic
