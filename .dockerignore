@@ -1,0 +1,14 @@
+node_modules
+.git
+src
+public
+index.html
+*.md
+.cursor
+vite.config.ts
+tsconfig*
+.oxlintrc.json
+.gitignore
+package-lock.json
+package.json
+*.tsbuildinfo
