@@ -1,6 +1,8 @@
+import { ArrowRight } from 'lucide-react'
 import { motion } from 'motion/react'
+import { Link } from 'react-router-dom'
 import { whatsappOrderUrl } from '../config'
-import { coffeeLots } from '../data'
+import { featuredCoffees } from '../data'
 import { fadeUp, stagger, VIEWPORT } from '../lib/motion'
 
 function WhatsAppIcon({ className }: { className?: string }) {
@@ -19,7 +21,7 @@ export function HarvestShowcase() {
     >
       <div className="mx-auto max-w-[1440px]">
         <motion.div
-          className="mb-12 flex flex-col justify-between border-b border-outline-variant/30 pb-6 md:flex-row md:items-end"
+          className="mb-12 flex flex-col justify-between gap-4 border-b border-outline-variant/30 pb-6 md:flex-row md:items-end"
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
@@ -33,10 +35,18 @@ export function HarvestShowcase() {
               Coffee you can order today
             </h2>
           </div>
-          <p className="mt-3 max-w-md text-on-surface-variant md:mt-0">
-            Three lots from Abisaki. Grown, processed, and packed in Limuru.
-            Message us on WhatsApp to buy.
-          </p>
+          <div className="flex flex-col items-start gap-3 md:items-end">
+            <p className="max-w-md text-on-surface-variant md:text-right">
+              Featured lots from Abisaki. Grown, processed, and packed in Limuru.
+            </p>
+            <Link
+              to="/shop"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-wider text-secondary uppercase transition-colors hover:text-primary"
+            >
+              View all
+              <ArrowRight className="size-3.5" />
+            </Link>
+          </div>
         </motion.div>
 
         <motion.div
@@ -46,7 +56,7 @@ export function HarvestShowcase() {
           whileInView="show"
           viewport={{ once: true, margin: '-60px' }}
         >
-          {coffeeLots.map((lot) => (
+          {featuredCoffees.map((lot) => (
             <motion.article
               key={lot.id}
               className="group relative flex flex-col justify-between rounded-2xl border border-outline-variant/40 bg-surface-container-lowest p-6 shadow-sm transition-colors duration-300 hover:border-primary"

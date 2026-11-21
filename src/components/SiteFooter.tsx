@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { WHATSAPP_DISPLAY, WHATSAPP_URL } from '../config'
 
 export function SiteFooter() {
@@ -24,19 +25,19 @@ export function SiteFooter() {
           </h4>
           <ul className="space-y-1.5 text-xs text-on-surface-variant">
             <li>
-              <a className="hover:text-primary" href="#harvest-showcase">
-                Washed AA
-              </a>
+              <Link className="hover:text-primary" to="/shop">
+                Shop all
+              </Link>
             </li>
             <li>
-              <a className="hover:text-primary" href="#harvest-showcase">
-                Honey
-              </a>
+              <Link className="hover:text-primary" to="/#harvest-showcase">
+                Featured lots
+              </Link>
             </li>
             <li>
-              <a className="hover:text-primary" href="#harvest-showcase">
-                Peaberry
-              </a>
+              <Link className="hover:text-primary" to="/#company-plans">
+                Company plans
+              </Link>
             </li>
           </ul>
         </div>

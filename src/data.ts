@@ -1,3 +1,8 @@
+import coffeesJson from './data/coffees.json'
+import type { CoffeeLot } from './types/coffee'
+
+export type { CoffeeLot }
+
 export const LOGO_URL =
   'https://lh3.googleusercontent.com/aida/ALJJyrBWqF9bQXahxeLA7LRmCoJPs3Y1ZS0W7kgsLCoTyomqIHXAswkrP_LOBbTtzkIYxFwrkyMyCVVwv8eToyMoRNohPChrv5ua5rqDDZ1dyuau_qfq15vlUYQu052lCDJ5nKtNlYmSpPLJfzbht7Aq5FN9lpyTv2qXspf31h8U1YGeop1yCS3vr2U_OVH9HjhWrScScC9b6jtwgR1YSl8ck6Cw_fBv6hyrtwIySzjpdmbU'
 
@@ -54,67 +59,9 @@ export const carouselSlides: CarouselSlide[] = [
   },
 ]
 
-export type CoffeeLot = {
-  id: string
-  name: string
-  origin: string
-  process: string
-  elevation: string
-  score: string
-  description: string
-  notes: string[]
-  price: string
-  image: string
-  alt: string
-}
+export const coffeeLots: CoffeeLot[] = coffeesJson
 
-export const coffeeLots: CoffeeLot[] = [
-  {
-    id: 'washed-aa',
-    name: 'Abisaki Washed AA',
-    origin: 'Limuru, Kenya',
-    process: 'Fully Washed',
-    elevation: '2,100 MASL · LIMURU',
-    score: 'AA',
-    description:
-      'Clean blackcurrant, bright citrus, and a long finish. Our flagship washed lot.',
-    notes: ['Blackcurrant', 'Citrus', 'Brown Sugar'],
-    price: 'KES 1,200',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuBtswJGpn7McS5Hm24Vd9nQmT60jIgLOXrSLQguU-eCdQ6-4hj_NMbvwnbqJYDpGA_1j56ATRhJFeFy_6UVNLA-zkALrfh3LBOD-bsaOA5JczWGHLE6bSSmZWKFIEXLJ3WZYr7_L-_W8Z1hteY8fTrajzTO6z_VgPKiZBT8GEdzknLWvndAOrGUHdLDsIkOrx7llQI0EZLxHh_rnB6HdhVeSxZjddISPo5PkwJYZJ8',
-    alt: 'Abisaki Washed AA coffee',
-  },
-  {
-    id: 'honey',
-    name: 'Abisaki Honey',
-    origin: 'Limuru, Kenya',
-    process: 'Honey Process',
-    elevation: '2,080 MASL · LIMURU',
-    score: 'AB',
-    description:
-      'Softer body, ripe stone fruit, and caramel sweetness. Dried with mucilage on.',
-    notes: ['Peach', 'Caramel', 'Honey'],
-    price: 'KES 1,350',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuDZi_pZ1bHpQwSADzjUgYok-7W4wehIp_w7ZmbiTGxSKIoyCwSnfIy5_pgr_nhBdRQZans03adQZrZC_fu5mnqF7ub574HztSYAmFyS9lfXfe6Yw4bhi1vElPLgi3wSDruJrMKf_gWUVLXxQsD7Lm3qfq7gXQUNb1ccyq5MjhZte3qwMPlpvcWBhCZ-46Z5GKpejpSKKTFHiS8iRe2LpK4xun_qmYgQKY7O4_4xe-0',
-    alt: 'Abisaki Honey process coffee',
-  },
-  {
-    id: 'peaberry',
-    name: 'Abisaki Peaberry',
-    origin: 'Limuru, Kenya',
-    process: 'Washed Peaberry',
-    elevation: '2,120 MASL · LIMURU',
-    score: 'PB',
-    description:
-      'Dense single-seed beans. Sharp acidity, red fruit, and a crisp finish.',
-    notes: ['Red Berry', 'Floral', 'Cocoa'],
-    price: 'KES 1,450',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuB2F-xejLrTMEBrAhRe5kmsFZZ8fE1u6uaAY50iTsRBU6jfY151wHIIgHjH8S73V6UCnGe11Bi3Kh3PECuMEUZcXLPOYvFeFZaFTcke7IPEdIdwDKoWfZVpR46SkrK7n6tU_5VLPI2ppaFM2z6vSSqT3bC1JeaC5r6fXxVx8S0ss_MZaWtrk4-mIHZNhv7IiTxvKNmYP8hfEHA3CYgNp1wPOeUBPNjm3IuyzOw1p9Y',
-    alt: 'Abisaki Peaberry coffee',
-  },
-]
+export const featuredCoffees = coffeeLots.filter((c) => c.featured)
 
 export const stats = [
   { label: 'Home', value: 'Limuru', detail: 'Kiambu, Kenya' },

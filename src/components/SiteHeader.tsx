@@ -1,13 +1,14 @@
 import { motion } from 'motion/react'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { WHATSAPP_DISPLAY, WHATSAPP_URL } from '../config'
 import { LOGO_URL } from '../data'
 import { EASE } from '../lib/motion'
 
-const nav = [
-  { href: '#harvest-showcase', label: 'Our Coffee', active: true },
-  { href: '#manifesto', label: 'The Farm' },
-  { href: '#company-plans', label: 'For Companies' },
-  { href: '#story', label: 'Our Story' },
+const homeNav = [
+  { to: '/#harvest-showcase', label: 'Our Coffee' },
+  { to: '/#manifesto', label: 'The Farm' },
+  { to: '/#company-plans', label: 'For Companies' },
+  { to: '/#story', label: 'Our Story' },
 ]
 
 function WhatsAppIcon({ className }: { className?: string }) {
@@ -19,6 +20,8 @@ function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 export function SiteHeader() {
+  const { pathname } = useLocation()
+
   return (
     <motion.header
       className="fixed top-0 z-50 w-full border-b border-outline-variant/30 bg-surface/90 backdrop-blur-md"
@@ -28,7 +31,7 @@ export function SiteHeader() {
     >
       <div className="mx-auto flex h-20 w-full max-w-[1440px] items-center justify-between gap-6 px-6 md:px-margin-desktop">
         <div className="flex items-center gap-8 lg:gap-12">
-          <a className="flex items-center gap-3" href="#">
+          <Link className="flex items-center gap-3" to="/">
             <img
               alt="Abisaki Farms"
               className="h-9 w-auto object-contain"
@@ -42,21 +45,29 @@ export function SiteHeader() {
                 Farms · Limuru
               </span>
             </div>
-          </a>
+          </Link>
           <nav className="hidden items-center gap-8 text-xs font-medium tracking-wider uppercase xl:flex">
-            {nav.map((item) => (
-              <a
-                key={item.href}
-                className={`py-1 transition-colors ${
-                  item.active
-                    ? 'text-primary hover:text-secondary'
-                    : 'text-on-surface-variant hover:text-primary'
-                }`}
-                href={item.href}
+            {homeNav.map((item) => (
+              <Link
+                key={item.to}
+                className="py-1 text-on-surface-variant transition-colors hover:text-primary"
+                to={item.to}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
+            <NavLink
+              to="/shop"
+              className={({ isActive }) =>
+                `py-1 transition-colors ${
+                  isActive || pathname === '/shop'
+                    ? 'text-primary'
+                    : 'text-on-surface-variant hover:text-primary'
+                }`
+              }
+            >
+              Shop
+            </NavLink>
           </nav>
         </div>
 
