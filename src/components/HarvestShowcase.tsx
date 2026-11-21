@@ -87,7 +87,7 @@ export function HarvestShowcase() {
                   </span>
                 </div>
                 <a
-                  className="inline-flex items-center gap-1.5 rounded-xl bg-[#25D366] px-5 py-2.5 text-xs font-semibold tracking-wider text-white uppercase transition-opacity hover:opacity-90"
+                  className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-5 py-2.5 text-xs font-semibold tracking-wider text-on-primary uppercase transition-colors hover:bg-[#2b211e]"
                   href={whatsappOrderUrl(lot.name)}
                   rel="noopener noreferrer"
                   target="_blank"

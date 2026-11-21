@@ -4,6 +4,7 @@ import { LOGO_URL } from '../data'
 const nav = [
   { href: '#harvest-showcase', label: 'Our Coffee', active: true },
   { href: '#manifesto', label: 'The Farm' },
+  { href: '#company-plans', label: 'For Companies' },
   { href: '#story', label: 'Our Story' },
 ]
 
@@ -18,20 +19,6 @@ function WhatsAppIcon({ className }: { className?: string }) {
 export function SiteHeader() {
   return (
     <header className="fixed top-0 z-50 w-full border-b border-outline-variant/30 bg-surface/90 backdrop-blur-md">
-      <div className="flex w-full items-center justify-between border-b border-white/10 bg-primary px-4 py-2 text-xs tracking-wider text-on-primary md:px-margin-desktop">
-        <span className="text-xs text-primary-fixed/90">
-          Grown, harvested, processed &amp; packed on our farm in Limuru
-        </span>
-        <div className="ml-4 hidden shrink-0 items-center gap-4 text-[11px] font-medium text-primary-fixed/80 md:flex">
-          <span>LIMURU · KENYA</span>
-          <span className="opacity-30">/</span>
-          <span className="flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-            Farm open
-          </span>
-        </div>
-      </div>
-
       <div className="mx-auto flex h-20 w-full max-w-[1440px] items-center justify-between gap-6 px-6 md:px-margin-desktop">
         <div className="flex items-center gap-8 lg:gap-12">
           <a className="flex items-center gap-3" href="#">
@@ -67,7 +54,7 @@ export function SiteHeader() {
         </div>
 
         <a
-          className="inline-flex items-center gap-2 rounded-xl bg-[#25D366] px-3.5 py-2.5 text-xs font-semibold tracking-wide text-white transition-opacity hover:opacity-90"
+          className="inline-flex items-center gap-2 rounded-lg bg-primary px-3.5 py-2.5 text-xs font-semibold tracking-wide text-on-primary transition-colors hover:bg-[#2b211e]"
           href={WHATSAPP_URL}
           rel="noopener noreferrer"
           target="_blank"

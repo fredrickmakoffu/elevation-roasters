@@ -55,6 +55,11 @@ export function SiteFooter() {
                 WhatsApp {WHATSAPP_DISPLAY}
               </a>
             </p>
+            <p>
+              <a className="hover:text-primary" href="#company-plans">
+                Company subscriptions
+              </a>
+            </p>
             <p>Limuru, Kiambu · Kenya</p>
           </div>
         </div>

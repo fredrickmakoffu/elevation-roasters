@@ -22,7 +22,8 @@ export function Manifesto() {
             Grow. Process. Pack.
           </h2>
           <p className="mt-3 text-sm text-on-surface-variant">
-            The whole chain stays on the farm in Limuru.
+            From seedling to sealed bag, the work stays on our land in Limuru —
+            so you always know where the coffee came from.
           </p>
         </div>
 

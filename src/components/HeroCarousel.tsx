@@ -54,19 +54,16 @@ export function HeroCarousel() {
       <div className="mx-auto max-w-[1440px]">
         <div className="relative mx-auto mb-12 flex max-w-4xl flex-col items-center text-center">
           <h1 className="font-display mb-6 text-4xl leading-[1.08] font-normal tracking-tight text-primary sm:text-5xl lg:text-7xl">
-            Coffee grown by{' '}
-            <span className="bg-altitude bg-clip-text text-transparent italic">
-              Altitude
-            </span>
-            .
-            <br className="hidden sm:inline" /> Farm to bag in Limuru.
+            Fresh coffee from our farm
+            <br className="hidden sm:inline" /> in{' '}
+            <span className="text-secondary italic">Limuru</span>.
           </h1>
           <p className="mb-8 max-w-xl text-base leading-relaxed text-on-surface-variant sm:text-lg">
-            Abisaki Farms grows, harvests, processes, and packs every bag on our
-            land in Limuru, Kenya. Order on WhatsApp.
+            We grow, harvest, process, and pack every bag on the farm. Order
+            straight from us on WhatsApp.
           </p>
           <a
-            className="inline-flex items-center gap-2.5 rounded-xl bg-[#25D366] px-8 py-3.5 text-xs font-semibold tracking-widest text-white uppercase shadow transition-opacity hover:opacity-90"
+            className="inline-flex items-center gap-2.5 rounded-lg bg-primary px-8 py-3.5 text-xs font-semibold tracking-widest text-on-primary uppercase shadow transition-colors hover:bg-[#2b211e]"
             href={WHATSAPP_URL}
             rel="noopener noreferrer"
             target="_blank"

@@ -1,3 +1,4 @@
+import { CompanyPlans } from './components/CompanyPlans'
 import { FarmStory } from './components/FarmStory'
 import { HarvestShowcase } from './components/HarvestShowcase'
 import { HeroCarousel } from './components/HeroCarousel'
@@ -9,10 +10,11 @@ export default function App() {
   return (
     <div className="relative overflow-x-hidden bg-surface text-on-surface antialiased">
       <SiteHeader />
-      <main className="w-full bg-surface pt-28">
+      <main className="w-full bg-surface pt-20">
         <HeroCarousel />
         <FarmStory />
         <HarvestShowcase />
+        <CompanyPlans />
         <Manifesto />
       </main>
       <SiteFooter />

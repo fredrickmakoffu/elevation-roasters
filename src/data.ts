@@ -127,19 +127,19 @@ export const manifesto = [
   {
     icon: 'terrain' as const,
     title: 'Grow',
-    body: 'Coffee trees on our Limuru land. We tend them from seedling to harvest.',
+    body: 'Our trees sit on the cool Limuru slopes. We raise them from seedling, prune through the seasons, and wait for full ripe cherries before anyone picks.',
     footer: 'SL28 · Ruiru 11',
   },
   {
     icon: 'air' as const,
     title: 'Harvest & Process',
-    body: 'Hand-picked ripe cherries. Pulped, washed, and dried on the same farm.',
-    footer: 'Nothing leaves early',
+    body: 'Cherries are hand-picked when red. Then we pulp, wash, and dry on the same farm — so the lot never leaves our care halfway through.',
+    footer: 'All done on site',
   },
   {
     icon: 'science' as const,
     title: 'Package',
-    body: 'Roasted and bagged at Abisaki. Fresh coffee, short path to your cup.',
+    body: 'We roast and bag at Abisaki. Short path from mill to sealed bag means fresher coffee when it reaches your office or home.',
     footer: 'Farm to bag',
   },
 ]
