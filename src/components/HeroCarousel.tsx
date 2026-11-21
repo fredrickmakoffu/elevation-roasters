@@ -1,7 +1,9 @@
 import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { motion } from 'motion/react'
 import { useCallback, useEffect, useState } from 'react'
 import { WHATSAPP_URL } from '../config'
 import { carouselSlides, stats } from '../data'
+import { fadeUp, fadeUpDelayed, stagger, VIEWPORT } from '../lib/motion'
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -53,27 +55,51 @@ export function HeroCarousel() {
     <section className="relative w-full overflow-hidden px-4 pt-8 pb-16 md:px-margin-desktop lg:pb-24">
       <div className="mx-auto max-w-[1440px]">
         <div className="relative mx-auto mb-12 flex max-w-4xl flex-col items-center text-center">
-          <h1 className="font-display mb-6 text-4xl leading-[1.08] font-normal tracking-tight text-primary sm:text-5xl lg:text-7xl">
+          <motion.h1
+            className="font-display mb-6 text-4xl leading-[1.08] font-normal tracking-tight text-primary sm:text-5xl lg:text-7xl"
+            custom={0.05}
+            variants={fadeUpDelayed}
+            initial="hidden"
+            animate="show"
+          >
             Fresh coffee from our farm
             <br className="hidden sm:inline" /> in{' '}
             <span className="text-secondary italic">Limuru</span>.
-          </h1>
-          <p className="mb-8 max-w-xl text-base leading-relaxed text-on-surface-variant sm:text-lg">
+          </motion.h1>
+          <motion.p
+            className="mb-8 max-w-xl text-base leading-relaxed text-on-surface-variant sm:text-lg"
+            custom={0.18}
+            variants={fadeUpDelayed}
+            initial="hidden"
+            animate="show"
+          >
             We grow, harvest, process, and pack every bag on the farm. Order
             straight from us on WhatsApp.
-          </p>
-          <a
+          </motion.p>
+          <motion.a
             className="inline-flex items-center gap-2.5 rounded-lg bg-primary px-8 py-3.5 text-xs font-semibold tracking-widest text-on-primary uppercase shadow transition-colors hover:bg-[#2b211e]"
+            custom={0.3}
+            variants={fadeUpDelayed}
+            initial="hidden"
+            animate="show"
             href={WHATSAPP_URL}
             rel="noopener noreferrer"
             target="_blank"
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.98 }}
           >
             <WhatsAppIcon className="size-4" />
             <span>Order on WhatsApp</span>
-          </a>
+          </motion.a>
         </div>
 
-        <div className="relative mx-auto w-full max-w-5xl">
+        <motion.div
+          className="relative mx-auto w-full max-w-5xl"
+          custom={0.42}
+          variants={fadeUpDelayed}
+          initial="hidden"
+          animate="show"
+        >
           <div className="relative rounded-2xl border border-outline-variant/30 bg-surface-container-lowest p-2 shadow-sm sm:p-3">
             <div className="group relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-surface-container-high sm:aspect-[16/9]">
               {carouselSlides.map((s, i) => (
@@ -153,13 +179,20 @@ export function HeroCarousel() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-4 md:grid-cols-4">
+        <motion.div
+          className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-4 md:grid-cols-4"
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={VIEWPORT}
+        >
           {stats.map((stat) => (
-            <div
+            <motion.div
               key={stat.label}
               className="flex flex-col justify-between rounded-xl border border-outline-variant/30 bg-surface-container-lowest p-5"
+              variants={fadeUp}
             >
               <div>
                 <span className="mb-1 block text-[10px] font-semibold tracking-wider text-on-surface-variant uppercase">
@@ -170,9 +203,9 @@ export function HeroCarousel() {
                 </p>
               </div>
               <p className="mt-3 text-xs font-medium text-secondary">{stat.detail}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

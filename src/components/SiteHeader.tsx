@@ -1,5 +1,7 @@
+import { motion } from 'motion/react'
 import { WHATSAPP_DISPLAY, WHATSAPP_URL } from '../config'
 import { LOGO_URL } from '../data'
+import { EASE } from '../lib/motion'
 
 const nav = [
   { href: '#harvest-showcase', label: 'Our Coffee', active: true },
@@ -18,7 +20,12 @@ function WhatsAppIcon({ className }: { className?: string }) {
 
 export function SiteHeader() {
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-outline-variant/30 bg-surface/90 backdrop-blur-md">
+    <motion.header
+      className="fixed top-0 z-50 w-full border-b border-outline-variant/30 bg-surface/90 backdrop-blur-md"
+      initial={{ y: -16, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.55, ease: EASE }}
+    >
       <div className="mx-auto flex h-20 w-full max-w-[1440px] items-center justify-between gap-6 px-6 md:px-margin-desktop">
         <div className="flex items-center gap-8 lg:gap-12">
           <a className="flex items-center gap-3" href="#">
@@ -64,6 +71,6 @@ export function SiteHeader() {
           <span className="sm:hidden">Order</span>
         </a>
       </div>
-    </header>
+    </motion.header>
   )
 }

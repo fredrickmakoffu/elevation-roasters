@@ -1,5 +1,7 @@
+import { motion } from 'motion/react'
 import { whatsappOrderUrl } from '../config'
 import { coffeeLots } from '../data'
+import { fadeUp, stagger, VIEWPORT } from '../lib/motion'
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -16,7 +18,13 @@ export function HarvestShowcase() {
       id="harvest-showcase"
     >
       <div className="mx-auto max-w-[1440px]">
-        <div className="mb-12 flex flex-col justify-between border-b border-outline-variant/30 pb-6 md:flex-row md:items-end">
+        <motion.div
+          className="mb-12 flex flex-col justify-between border-b border-outline-variant/30 pb-6 md:flex-row md:items-end"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={VIEWPORT}
+        >
           <div>
             <p className="mb-1.5 text-xs font-bold tracking-widest text-secondary uppercase">
               From the farm
@@ -29,19 +37,28 @@ export function HarvestShowcase() {
             Three lots from Abisaki. Grown, processed, and packed in Limuru.
             Message us on WhatsApp to buy.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+        <motion.div
+          className="grid grid-cols-1 gap-8 lg:grid-cols-3"
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-60px' }}
+        >
           {coffeeLots.map((lot) => (
-            <article
+            <motion.article
               key={lot.id}
-              className="relative flex flex-col justify-between rounded-2xl border border-outline-variant/40 bg-surface-container-lowest p-6 shadow-sm transition-all duration-300 hover:border-primary"
+              className="group relative flex flex-col justify-between rounded-2xl border border-outline-variant/40 bg-surface-container-lowest p-6 shadow-sm transition-colors duration-300 hover:border-primary"
+              variants={fadeUp}
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
               <div>
                 <div className="relative mb-5 h-80 w-full overflow-hidden rounded-xl border border-outline-variant/20 bg-surface-container-low">
                   <img
                     alt={lot.alt}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     src={lot.image}
                   />
                   <div className="absolute top-3 left-3 rounded bg-surface-container-lowest/90 px-3 py-1 text-[11px] font-semibold tracking-wider text-primary uppercase backdrop-blur-md">
@@ -96,9 +113,9 @@ export function HarvestShowcase() {
                   <span>Order</span>
                 </a>
               </div>
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

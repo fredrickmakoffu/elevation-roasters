@@ -16,8 +16,8 @@ export default function App() {
         <FarmStory />
         <HarvestShowcase />
         <CompanyPlans />
-        <People />
         <Manifesto />
+        <People />
       </main>
       <SiteFooter />
     </div>
