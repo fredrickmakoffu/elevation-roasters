@@ -3,19 +3,28 @@ import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { fadeUp, VIEWPORT } from '../lib/motion'
 
-/**
- * Fill these after you create the Google Form (see README / chat notes).
- * formAction: https://docs.google.com/forms/d/e/FORM_ID/formResponse
- * entry IDs: from the form’s “Get pre-filled link” or page source (entry.XXXXXXXX)
- */
+/** Abisaki contact Google Form */
 const GOOGLE_FORM = {
-  formAction: '',
+  formAction:
+    'https://docs.google.com/forms/d/e/1FAIpQLSe428ZsApJ4pPEoF7aISUf9eH6mpcs8nthCLaVE1s2Ktrs1aw/formResponse',
   entries: {
-    name: '',
-    phone: '',
-    message: '',
+    firstName: 'entry.1682129986',
+    lastName: 'entry.750259389',
+    email: 'entry.551135454',
+    phone: 'entry.4528205',
+    country: 'entry.2123923083',
+    topic: 'entry.246628006',
+    message: 'entry.1179178576',
   },
 } as const
+
+const TOPICS = [
+  'Coffee order',
+  'Company subscription',
+  'Farm visit',
+  'General question',
+  'Other',
+]
 
 export function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>(
@@ -26,29 +35,25 @@ export function ContactForm() {
     e.preventDefault()
     const form = e.currentTarget
     const data = new FormData(form)
-    const name = String(data.get('name') ?? '').trim()
+
+    const firstName = String(data.get('firstName') ?? '').trim()
+    const lastName = String(data.get('lastName') ?? '').trim()
+    const email = String(data.get('email') ?? '').trim()
     const phone = String(data.get('phone') ?? '').trim()
+    const country = String(data.get('country') ?? '').trim()
+    const topic = String(data.get('topic') ?? '').trim()
     const message = String(data.get('message') ?? '').trim()
 
-    if (!name || !phone || !message) return
-
-    const wired =
-      GOOGLE_FORM.formAction &&
-      GOOGLE_FORM.entries.name &&
-      GOOGLE_FORM.entries.phone &&
-      GOOGLE_FORM.entries.message
-
-    if (!wired) {
-      // Local success until Google Form IDs are provided
-      setStatus('sent')
-      form.reset()
-      return
-    }
+    if (!firstName || !phone || !message) return
 
     setStatus('sending')
     const body = new FormData()
-    body.append(GOOGLE_FORM.entries.name, name)
+    body.append(GOOGLE_FORM.entries.firstName, firstName)
+    body.append(GOOGLE_FORM.entries.lastName, lastName)
+    body.append(GOOGLE_FORM.entries.email, email)
     body.append(GOOGLE_FORM.entries.phone, phone)
+    body.append(GOOGLE_FORM.entries.country, country)
+    body.append(GOOGLE_FORM.entries.topic, topic)
     body.append(GOOGLE_FORM.entries.message, message)
 
     try {
@@ -63,6 +68,12 @@ export function ContactForm() {
       setStatus('error')
     }
   }
+
+  const fieldClass =
+    'w-full rounded-lg border border-outline-variant/50 bg-surface px-4 py-3 text-sm text-primary outline-none transition-colors placeholder:text-on-surface-variant/50 focus:border-primary'
+
+  const labelClass =
+    'mb-1.5 block text-xs font-semibold tracking-wider text-on-surface-variant uppercase'
 
   return (
     <section
@@ -88,7 +99,7 @@ export function ContactForm() {
             — we read every message.
           </p>
           <p className="mt-6 text-sm text-on-surface-variant">
-            Prefer chat?{' '}
+            Prefer email?{' '}
             <a
               className="font-semibold text-secondary hover:text-primary"
               href="mailto:info@abisakisfarm.com"
@@ -118,45 +129,104 @@ export function ContactForm() {
               className="space-y-5 rounded-2xl border border-outline-variant/40 bg-surface-container-lowest p-6 sm:p-8"
               onSubmit={onSubmit}
             >
-              <div>
-                <label
-                  className="mb-1.5 block text-xs font-semibold tracking-wider text-on-surface-variant uppercase"
-                  htmlFor="contact-name"
-                >
-                  Name
-                </label>
-                <input
-                  id="contact-name"
-                  name="name"
-                  required
-                  autoComplete="name"
-                  className="w-full rounded-lg border border-outline-variant/50 bg-surface px-4 py-3 text-sm text-primary outline-none transition-colors placeholder:text-on-surface-variant/50 focus:border-primary"
-                  placeholder="Your name"
-                  type="text"
-                />
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label className={labelClass} htmlFor="contact-first-name">
+                    First name
+                  </label>
+                  <input
+                    id="contact-first-name"
+                    name="firstName"
+                    required
+                    autoComplete="given-name"
+                    className={fieldClass}
+                    placeholder="First name"
+                    type="text"
+                  />
+                </div>
+                <div>
+                  <label className={labelClass} htmlFor="contact-last-name">
+                    Last name
+                  </label>
+                  <input
+                    id="contact-last-name"
+                    name="lastName"
+                    autoComplete="family-name"
+                    className={fieldClass}
+                    placeholder="Last name"
+                    type="text"
+                  />
+                </div>
               </div>
-              <div>
-                <label
-                  className="mb-1.5 block text-xs font-semibold tracking-wider text-on-surface-variant uppercase"
-                  htmlFor="contact-phone"
-                >
-                  Number
-                </label>
-                <input
-                  id="contact-phone"
-                  name="phone"
-                  required
-                  autoComplete="tel"
-                  className="w-full rounded-lg border border-outline-variant/50 bg-surface px-4 py-3 text-sm text-primary outline-none transition-colors placeholder:text-on-surface-variant/50 focus:border-primary"
-                  placeholder="+254 7XX XXX XXX"
-                  type="tel"
-                />
+
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label className={labelClass} htmlFor="contact-email">
+                    Email
+                  </label>
+                  <input
+                    id="contact-email"
+                    name="email"
+                    autoComplete="email"
+                    className={fieldClass}
+                    placeholder="you@email.com"
+                    type="email"
+                  />
+                </div>
+                <div>
+                  <label className={labelClass} htmlFor="contact-phone">
+                    WhatsApp number
+                  </label>
+                  <input
+                    id="contact-phone"
+                    name="phone"
+                    required
+                    autoComplete="tel"
+                    className={fieldClass}
+                    placeholder="+254 7XX XXX XXX"
+                    type="tel"
+                  />
+                </div>
               </div>
+
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label className={labelClass} htmlFor="contact-country">
+                    Country
+                  </label>
+                  <input
+                    id="contact-country"
+                    name="country"
+                    autoComplete="country-name"
+                    className={fieldClass}
+                    placeholder="Kenya"
+                    type="text"
+                  />
+                </div>
+                <div>
+                  <label className={labelClass} htmlFor="contact-topic">
+                    Topic
+                  </label>
+                  <select
+                    id="contact-topic"
+                    name="topic"
+                    className={fieldClass}
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Select a topic
+                    </option>
+                    {TOPICS.map((t) => (
+                      <option key={t} value={t}>
+                        {t}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
               <div>
-                <label
-                  className="mb-1.5 block text-xs font-semibold tracking-wider text-on-surface-variant uppercase"
-                  htmlFor="contact-message"
-                >
+                <label className={labelClass} htmlFor="contact-message">
                   Message
                 </label>
                 <textarea
@@ -164,15 +234,17 @@ export function ContactForm() {
                   name="message"
                   required
                   rows={5}
-                  className="w-full resize-y rounded-lg border border-outline-variant/50 bg-surface px-4 py-3 text-sm text-primary outline-none transition-colors placeholder:text-on-surface-variant/50 focus:border-primary"
+                  className={`${fieldClass} resize-y`}
                   placeholder="How can we help?"
                 />
               </div>
+
               {status === 'error' && (
                 <p className="text-sm text-error">
                   Something went wrong. Try again or email us.
                 </p>
               )}
+
               <button
                 type="submit"
                 disabled={status === 'sending'}
